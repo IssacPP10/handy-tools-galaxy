@@ -9,7 +9,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { Switch } from "@/components/ui/switch";
 import { Link, useLocation } from "react-router-dom";
+import { useI18n } from "@/lib/i18n/useTranslation";
 
 const tools = [
   { title: "Dashboard", icon: Home, path: "/" },
@@ -21,6 +23,11 @@ const tools = [
 
 export function AppSidebar() {
   const location = useLocation();
+  const { language, setLanguage, t } = useI18n();
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "es" : "en");
+  };
 
   return (
     <Sidebar>
@@ -28,7 +35,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <div className="flex items-center gap-2 px-4 py-2">
             <img src="/lovable-uploads/tools-logo.png" alt="Tools Galaxy Logo" className="h-8 w-8" />
-            <span className="text-lg font-bold text-primary">Tools Galaxy</span>
+            <span className="text-lg font-bold text-primary">{t("tools.title")}</span>
           </div>
           <SidebarGroupLabel>Tools</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -51,6 +58,20 @@ export function AppSidebar() {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
+        </SidebarGroup>
+        
+        <SidebarGroup className="mt-auto">
+          <div className="flex items-center justify-between px-4 py-2">
+            <span className="text-sm">{t("common.language")}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-sm">EN</span>
+              <Switch
+                checked={language === "es"}
+                onCheckedChange={toggleLanguage}
+              />
+              <span className="text-sm">ES</span>
+            </div>
+          </div>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
