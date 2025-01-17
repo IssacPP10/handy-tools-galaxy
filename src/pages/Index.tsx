@@ -1,11 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { ToolCard } from "@/components/ToolCard";
+
+const tools = [
+  {
+    title: "Antilogarithm Calculator",
+    description: "Calculate antilogarithms with precision",
+    path: "/calculators/antilog",
+  },
+  {
+    title: "Acid Test Ratio Calculator",
+    description: "Calculate the acid test ratio for financial analysis",
+    path: "/calculators/acid-test",
+  },
+  {
+    title: "Pixel & Character Counter",
+    description: "Count pixels and characters in text or images",
+    path: "/text-tools/counter",
+  },
+  {
+    title: "Size Converter",
+    description: "Convert between different size units",
+    path: "/converters/size",
+  },
+  {
+    title: "Temperature Converter",
+    description: "Convert between different temperature units",
+    path: "/converters/temperature",
+  },
+];
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Select a tool from the collection below to get started.
+        </p>
+      </div>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {tools.map((tool) => (
+          <ToolCard key={tool.path} {...tool} />
+        ))}
       </div>
     </div>
   );
