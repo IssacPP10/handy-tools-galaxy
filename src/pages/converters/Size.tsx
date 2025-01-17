@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const units = {
   px: "Pixels",
@@ -32,12 +33,18 @@ const SizeConverter = () => {
   const [value, setValue] = useState<string>("0");
   const [fromUnit, setFromUnit] = useState<Unit>("px");
   const [toUnit, setToUnit] = useState<Unit>("cm");
+  const [options, setOptions] = useState({
+    accuracy: false,
+    lowercase: true,
+    stringify: true,
+    shortcut: false,
+  });
 
   const convert = (value: string, from: Unit, to: Unit): string => {
     const numValue = parseFloat(value);
     if (isNaN(numValue)) return "0";
     const result = numValue * conversionRates[from][to];
-    return result.toFixed(6);
+    return result.toFixed(options.accuracy ? 6 : 2);
   };
 
   const handleValueChange = (newValue: string) => {
@@ -47,69 +54,161 @@ const SizeConverter = () => {
   const result = convert(value, fromUnit, toUnit);
 
   return (
-    <div className="container max-w-2xl mx-auto space-y-6">
-      <Card>
+    <div className="container max-w-4xl mx-auto space-y-8 p-4">
+      <Card className="bg-card border-none shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-primary">
-            Size Converter
+          <CardTitle className="text-3xl font-bold text-primary">
+            Length Converter
           </CardTitle>
+          <p className="text-muted-foreground">
+            Length Converter is a free online unit converter to instantly convert units of
+            length in or between metric and imperial units like feet to meter.
+          </p>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="value">Value</Label>
-              <Input
-                id="value"
-                type="number"
-                value={value}
-                onChange={(e) => handleValueChange(e.target.value)}
-                placeholder="Enter value"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>From</Label>
-                <Select
-                  value={fromUnit}
-                  onValueChange={(value) => setFromUnit(value as Unit)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select unit" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(units).map(([key, label]) => (
-                      <SelectItem key={key} value={key}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+        <CardContent className="space-y-8">
+          <Card className="border-none bg-muted/50">
+            <CardHeader>
+              <CardTitle className="text-xl">Easy Tool</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label>Convert From</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input
+                      type="number"
+                      value={value}
+                      onChange={(e) => handleValueChange(e.target.value)}
+                      placeholder="Enter value"
+                      className="bg-background"
+                    />
+                    <Select value={fromUnit} onValueChange={(v) => setFromUnit(v as Unit)}>
+                      <SelectTrigger className="bg-background">
+                        <SelectValue placeholder="Select unit" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Object.entries(units).map(([key, label]) => (
+                          <SelectItem key={key} value={key}>
+                            {label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Convert to</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-2 bg-background rounded-md border">
+                      {result} {units[toUnit].toLowerCase()}
+                    </div>
+                    <Select value={toUnit} onValueChange={(v) => setToUnit(v as Unit)}>
+                      <SelectTrigger className="bg-background">
+                        <SelectValue placeholder="Select unit" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {Object.entries(units).map(([key, label]) => (
+                          <SelectItem key={key} value={key}>
+                            {label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Options</Label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="accuracy"
+                        checked={options.accuracy}
+                        onCheckedChange={(checked) =>
+                          setOptions((prev) => ({ ...prev, accuracy: checked as boolean }))
+                        }
+                      />
+                      <label
+                        htmlFor="accuracy"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Accuracy
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="stringify"
+                        checked={options.stringify}
+                        onCheckedChange={(checked) =>
+                          setOptions((prev) => ({ ...prev, stringify: checked as boolean }))
+                        }
+                      />
+                      <label
+                        htmlFor="stringify"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Stringify
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="lowercase"
+                        checked={options.lowercase}
+                        onCheckedChange={(checked) =>
+                          setOptions((prev) => ({ ...prev, lowercase: checked as boolean }))
+                        }
+                      />
+                      <label
+                        htmlFor="lowercase"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Lowercase
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id="shortcut"
+                        checked={options.shortcut}
+                        onCheckedChange={(checked) =>
+                          setOptions((prev) => ({ ...prev, shortcut: checked as boolean }))
+                        }
+                      />
+                      <label
+                        htmlFor="shortcut"
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        Shortcut
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label>To</Label>
-                <Select
-                  value={toUnit}
-                  onValueChange={(value) => setToUnit(value as Unit)}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select unit" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(units).map(([key, label]) => (
-                      <SelectItem key={key} value={key}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            </CardContent>
+          </Card>
+
+          <Card className="border-none bg-muted/50">
+            <CardHeader>
+              <CardTitle className="text-xl">Questions</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-2">What is unit of length?</h3>
+                  <p className="text-muted-foreground">
+                    A <em>unit of length</em> refers to any arbitrarily chosen and accepted reference standard for{" "}
+                    <em>measurement of length</em>. The most common units in modern use are the{" "}
+                    <em>metric units</em>, used in every country globally. In the United States
+                    the U.S. customary units are also in use. British <em>Imperial units</em>{" "}
+                    are still used for some purposes in the United Kingdom and some other
+                    countries. The metric system is sub-divided into SI and non-SI units. Our{" "}
+                    <em>length converter</em> tool provides to convert units between or in
+                    those unit systems.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="pt-4">
-              <div className="text-2xl font-bold text-primary">
-                {result} {units[toUnit]}
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </CardContent>
       </Card>
     </div>
