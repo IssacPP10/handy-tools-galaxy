@@ -13,10 +13,10 @@ import { Link } from "react-router-dom";
 
 const tools = [
   { title: "Dashboard", icon: Home, path: "/" },
-  { title: "Calculators", icon: Calculator, path: "/calculators/antilog" },
-  { title: "Converters", icon: Ruler, path: "/converters" },
-  { title: "Text Tools", icon: Type, path: "/text-tools" },
-  { title: "Measurement", icon: Thermometer, path: "/measurement" },
+  { title: "Acid Test Calculator", icon: Calculator, path: "/calculators/acid-test" },
+  { title: "Size Converter", icon: Ruler, path: "/converters/size" },
+  { title: "Text Counter", icon: Type, path: "/text-tools/counter" },
+  { title: "Temperature Converter", icon: Thermometer, path: "/converters/temperature" },
 ];
 
 export function AppSidebar() {
