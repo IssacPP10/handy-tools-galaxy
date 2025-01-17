@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const tools = [
   { title: "Dashboard", icon: Home, path: "/" },
-  { title: "Calculators", icon: Calculator, path: "/calculators" },
+  { title: "Calculators", icon: Calculator, path: "/calculators/antilog" },
   { title: "Converters", icon: Ruler, path: "/converters" },
   { title: "Text Tools", icon: Type, path: "/text-tools" },
   { title: "Measurement", icon: Thermometer, path: "/measurement" },
@@ -30,7 +30,7 @@ export function AppSidebar() {
               {tools.map((tool) => (
                 <SidebarMenuItem key={tool.title}>
                   <SidebarMenuButton asChild>
-                    <Link to={tool.path}>
+                    <Link to={tool.path} className="hover:text-primary transition-colors">
                       <tool.icon className="h-4 w-4" />
                       <span>{tool.title}</span>
                     </Link>
