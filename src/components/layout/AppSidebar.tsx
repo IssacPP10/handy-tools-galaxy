@@ -34,8 +34,8 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <div className="flex items-center gap-2 px-4 py-2">
-            <img src="/lovable-uploads/tools-logo.png" alt="Tools Galaxy Logo" className="h-8 w-8" />
-            <span className="text-lg font-bold text-primary">{t("tools.title")}</span>
+            <img src="/Logo.jpg" alt="Tools Galaxy Logo" className="h-8 w-8 rounded-md" />
+            <span className="text-lg font-bold text-primary">Tools Galaxy</span>
           </div>
           <SidebarGroupLabel>Tools</SidebarGroupLabel>
           <SidebarGroupContent>

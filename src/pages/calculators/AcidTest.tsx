@@ -11,10 +11,11 @@ const AcidTest = () => {
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground">
-            Coming soon! This tool will help you calculate the acid test ratio for financial analysis.
+            Coming soon! This tool will help you calculate the acid test ratio
+            for financial analysis.
           </p>
         </CardContent>
-      </Card>
+      </Card>      
     </div>
   );
 };

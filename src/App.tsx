@@ -9,6 +9,7 @@ import SizeConverter from "./pages/converters/Size";
 import Temperature from "./pages/converters/Temperature";
 import AcidTest from "./pages/calculators/AcidTest";
 import Counter from "./pages/text-tools/Counter";
+import AntilogCalculator from "./pages/calculators/Antilog";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/converters/size" element={<SizeConverter />} />
             <Route path="/converters/temperature" element={<Temperature />} />
+            <Route path="/calculators/antilog" element={<AntilogCalculator />} />
             <Route path="/calculators/acid-test" element={<AcidTest />} />
             <Route path="/text-tools/counter" element={<Counter />} />
           </Routes>

@@ -25,6 +25,30 @@ export const translations = {
         characters: "Characters",
         words: "Words",
         lines: "Lines"
+      },
+      antilogarithmCalculator: {
+        title: "Antilogarithm Calculator",
+        description: "Calculate antilogarithm with any base",
+        number: "Number",
+        base: "Base",
+        calculate: "Calculate",
+        result: "Result:",
+        titleQ: "Question",
+        question: "What is Antilogarithm?",
+        answer: "An antilogarithm, or antilog, is the inverse of a logarithm. It's the number that corresponds to a given logarithm.",
+        explain: "Explanation",
+        p1: "A logarithm is a mathematical process that involves raising a base to a power to get a value.",
+        p2: "An antilogarithm is the process of raising the base to the answer from the previous logarithmic operation.",
+        p3: "The mathematical notation for a logarithm is log(b) = a.",
+        p4: "The mathematical notation for an antilogarithm is antilog(a) = b.",
+        example: "For example: If log(100) = 2, then antilog(2) = 100.",
+        howToUse: "How to Use an Antilogarithm Calculator",
+        desc: "To use an antilogarithm calculator, follow these steps:",
+        s1: "Enter the logarithmic result (e.g., 2).",
+        s2: "Enter the base (e.g., 8).",
+        s3: "The calculator will give you the original number (e.g., 64).",
+        question2: "Real-World Example",
+        exRW: "Let's say you have the logarithmic result of log(64) = 2 with base 8. To find the original number, use the antilogarithm: antilog(2) = 8^2 = 64."
       }
     },
     common: {
@@ -57,6 +81,30 @@ export const translations = {
         characters: "Caracteres",
         words: "Palabras",
         lines: "Líneas"
+      },
+      antilogarithmCalculator: {
+        title: "Calculadora de Antilogaritmo",
+        description: "Calcula el antilogaritmo con cualquier base",
+        number: "Número",
+        base: "Base",
+        calculate: "Calcular",
+        result: "Resultado:",
+        titleQ: "Pregunta",
+        question: "¿Qué es el antilogaritmo?",
+        answer: "Un antilogaritmo, o antilog, es el inverso de un logaritmo. Es el número que corresponde a un logaritmo dado.",
+        explain: "Explicación",
+        p1: "Un logaritmo es un proceso matemático que consiste en elevar una base a una potencia para obtener un valor.",
+        p2: "Un antilogaritmo es el proceso de elevar la base a la respuesta de la operación logarítmica anterior.",
+        p3: "La notación matemática de un logaritmo es log(b) = a.",
+        p4: "La notación matemática de un antilogaritmo es antilog(a) = b.",
+        example: "Por ejemplo: Si log(100) = 2, entonces antilog(2) = 100.",
+        howToUse: "Cómo usar una calculadora de antilogaritmos",
+        desc: "Para usar una calculadora de antilogaritmos, sigue estos pasos:",
+        s1: "Ingresa el resultado logarítmico (por ejemplo, 2).",
+        s2: "Ingresa la base (por ejemplo, 8).",
+        s3: "La calculadora te dará el número original (por ejemplo, 64).",
+        question2: "Ejemplo del mundo real",
+        exRW: "Supongamos que tienes el resultado logarítmico de log(64) = 2 con base 8. Para encontrar el número original, usa el antilogaritmo: antilog(2) = 8^2 = 64."
       }
     },
     common: {

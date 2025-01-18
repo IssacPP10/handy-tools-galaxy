@@ -12,8 +12,8 @@ const tools = [
     path: "/calculators/acid-test",
   },
   {
-    title: "Pixel & Character Counter",
-    description: "Count pixels and characters in text or images",
+    title: "Character Counter",
+    description: "Count characters in text",
     path: "/text-tools/counter",
   },
   {
